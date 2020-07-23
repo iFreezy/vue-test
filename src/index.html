@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="vueRest">
+    <button v-on:click="getHashtags">Грузи Хэштеги</button>
+    <ul>
+        <li v-for="hashTag in hashTags">{{hashTag}}</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    let app = new Vue({
+        el: '#vueRest',
+        data: {
+            hashTags: [],
+            url: {
+                hashtags: 'https://dka-develop.ru/api?type=hashtag',
+                cities: 'https://dka-develop.ru/api?type=city'
+            }
+        },
+        created: function(){
+        },
+        methods: {
+            getHashtags(){
+                axios.get(this.url.hashtags).then((response) => {
+                        console.log(response.data)
+                        this.hashTags = response.data
+                    })
+            }
+        }
+    })
+</script>
+</body>
+</html>

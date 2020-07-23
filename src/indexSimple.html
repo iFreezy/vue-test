@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div class="">
+    <div id="vue" :title="message">
+        {{ message }}
+        <template v-if="status === 1">
+            <h1>Свойство равно 1</h1>
+            <p>Описание свойства</p>
+        </template>
+
+        <template v-else>
+            <h1>Свойство равно {{ status }}</h1>
+            <p>Описание свойства</p>
+        </template>
+        <div class="class-default list" :class="[isActive ? 'active' : 'disabled', 'default']">
+        </div>
+        <h1 v-bind:style="{ color: 'red', width: width + 'px' }">
+            Текст
+        </h1>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let app = new Vue({
+        el: '#vue',
+        data: {
+            message: 'Hello world',
+            status: 1,
+            isActive: false,
+            isBtn: true,
+            width: 15
+        }
+    })
+</script>
+</body>
+</html>
